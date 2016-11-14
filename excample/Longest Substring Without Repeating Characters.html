@@ -75,9 +75,9 @@
 		newStrs[0] = str[0];
 //		遍历这个数组,进行组合
 		for(let i=0;i<strs.length;i++){
+//			第一个字符串
+			let newStr = strs[i];
 			for (let x = i+1 ;x<strs.length;x++){
-//				第一个字符串
-				let newStr = strs[i];
 //				如果下一个字符与前面的字符串没有匹配,则两个字符串拼接起来
 //				indexOf(),返回的是字符在字符串中的下表,如果没有匹配返回-1
 				if (newStr.indexOf(strs[x])<0){
