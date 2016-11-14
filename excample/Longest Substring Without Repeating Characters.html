@@ -62,7 +62,8 @@
 	 */
 	var lengthOfLongestSubstring = function(str) {
 		var strs = [],//保存单个字符串
-			newStrs = [];//生成所有带有不重复字母的连续字符串数组
+			strLang = 0;
+//			newStrs = [];//生成所有带有不重复字母的连续字符串数组
 		//遍历字符串,拆分单个字符至新数组
 		if (str.length){
 			for(let i=0;i<str.length;i++){
@@ -71,8 +72,6 @@
 		}else {
 			return 0;
 		};
-//		给第一个赋值,字符串长度只有1
-		newStrs[0] = str[0];
 //		遍历这个数组,进行组合
 		for(let i=0;i<strs.length;i++){
 //			第一个字符串
@@ -82,25 +81,15 @@
 //				indexOf(),返回的是字符在字符串中的下表,如果没有匹配返回-1
 				if (newStr.indexOf(strs[x])<0){
 					newStr= newStr + strs[x];
-//					如果一个没有重复,最后再放入newStrs
-					if (x ===strs.length-1 ){
-						newStrs[i] = newStr;
-					};
-				}else{
-					newStrs[i] = newStr;
-				};
-			}
-		};
-		console.log(newStrs);
-		let num = 0;
-		for(let i=0;i<newStrs.length;i++){
-			if(num<newStrs[i].length){
-				num = newStrs[i].length;
+				}
 			};
-			return num;
+			if (strLang < newStr.length){
+				strLang = newStr.length;
+			};
 		};
-	};
-	lengthOfLongestSubstring("pwwkew");
+		return strLang;
+	}
+//	lengthOfLongestSubstring("pkew");
 	console.log(lengthOfLongestSubstring("pwwkew"));
 </script>
 </body>
