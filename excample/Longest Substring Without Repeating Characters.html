@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<title>3.Longest Substring Without Repeating Characters</title>
+</head>
+<body>
+
+	<div class="container">
+		<h1>1. Given a string, find the length of the longest substring without repeating characters.</h1>
+		<p>Examples:
+
+			Given "abcabcbb", the answer is "abc", which the length is 3.
+
+			Given "bbbbb", the answer is "b", with the length of 1.
+
+			Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+			Subscribe to see which companies asked this question</p>
+		<h1> 1.给定一个字符串,找到最长的,连续的,不能有重复字符的子字符串</h1>
+		<pre>
+			 /**
+			 * @param {number[]} nums
+			 * @param {number} target
+			 * @return {number[]}
+			 */
+
+			var twoSum = function (nums,target) {
+				for(var i=0;i< nums.length;i++){
+					for(var x = i+1;x< nums.length;x++){
+						if (nums[i] + nums[x] === target){
+							return [i,x];
+						};
+					};
+				};
+			};
+			twoSum([3,2,4],6);
+		</pre>
+	</div>
+<script>
+	/**
+	 * Source : https://leetcode.com/problems/two-sum/
+	 * Author : freed
+	 * Date   : 2016-11-14
+	 * /
+
+
+	/**
+	 * @param {number[]} nums
+	 * @param {number} target
+	 * @return {number[]}
+	 */
+
+	/**
+	 * @param {string} s
+	 * @return {number}
+	 */
+	var lengthOfLongestSubstring = function(str) {
+		var strs = [],//保存单个字符串
+			newStrs = [];//生成所有带有不重复字母的连续字符串数组
+		//遍历字符串,拆分单个字符至新数组
+		if (str.length){
+			for(let i=0;i<str.length;i++){
+				strs[i] = str.substring(i,i+1);
+			}
+		}else {
+			return 0;
+		};
+//		给第一个赋值,字符串长度只有1
+		newStrs[0] = str[0];
+//		遍历这个数组,进行组合
+		for(let i=0;i<strs.length;i++){
+			for (let x = i+1 ;x<strs.length;x++){
+//				第一个字符串
+				let newStr = strs[i];
+//				如果下一个字符与前面的字符串没有匹配,则两个字符串拼接起来
+//				indexOf(),返回的是字符在字符串中的下表,如果没有匹配返回-1
+				if (newStr.indexOf(strs[x])<0){
+					newStr= newStr + strs[x];
+//					如果一个没有重复,最后再放入newStrs
+					if (x ===strs.length-1 ){
+						newStrs[i] = newStr;
+					};
+				}else{
+					newStrs[i] = newStr;
+				};
+			}
+		};
+		console.log(newStrs);
+		let num = 0;
+		for(let i=0;i<newStrs.length;i++){
+			if(num<newStrs[i].length){
+				num = newStrs[i].length;
+			};
+			return num;
+		};
+	};
+	lengthOfLongestSubstring("pwwkew");
+	console.log(lengthOfLongestSubstring("pwwkew"));
+</script>
+</body>
+</html>

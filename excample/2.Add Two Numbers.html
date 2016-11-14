@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<title> Add Two Numbers</title>
+</head>
+<body>
+
+	<div class="container">
+		<h1>1. You are given two linked lists representing two non-negative numbers.
+			The digits are stored in reverse order and each of their nodes contain a
+			single digit. Add the two numbers and return it as a linked list.</h1>
+		<h1> 1.给定一个整数数组,返回两个数字之和是某个特定的值的下标,你可以默认只有一个答案</h1>
+		<pre>
+			 /**
+			 * @param {number[]} nums
+			 * @param {number} target
+			 * @return {number[]}
+			 */
+
+			var twoSum = function (nums,target) {
+				for(var i=0;i< nums.length;i++){
+					for(var x = i+1;x< nums.length;x++){
+						if (nums[i] + nums[x] === target){
+							return [i,x];
+						};
+					};
+				};
+			};
+			twoSum([3,2,4],6);
+		</pre>
+	</div>
+<script>
+	/**
+	 * Source : https://leetcode.com/problems/two-sum/
+	 * Author : freed
+	 * Date   : 2016-11-14
+	 * /
+
+
+	/**
+	 * @param {number[]} nums
+	 * @param {number} target
+	 * @return {number[]}
+	 */
+
+	var twoSum = function (nums,target) {
+		for(var i=0;i<nums.length; i++){
+			for(var x = i+1;x<nums.length;x++){
+				if (nums[i] + nums[x] === target){
+					return [i,x];
+				}
+			};
+		}
+	};
+	twoSum([3,2,4],6);
+</script>
+</body>
+</html>
