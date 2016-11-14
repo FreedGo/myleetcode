@@ -24,22 +24,41 @@
 			Subscribe to see which companies asked this question</p>
 		<h1> 1.给定一个字符串,找到最长的,连续的,不能有重复字符的子字符串</h1>
 		<pre>
-			 /**
-			 * @param {number[]} nums
-			 * @param {number} target
-			 * @return {number[]}
+			/**
+			 * 输入一个字符串，输出找到最长的,连续的,不能有重复字符的子字符串的长度
+			 * @param {string} str
+			 * @return {number}
 			 */
-
-			var twoSum = function (nums,target) {
-				for(var i=0;i< nums.length;i++){
-					for(var x = i+1;x< nums.length;x++){
-						if (nums[i] + nums[x] === target){
-							return [i,x];
-						};
+			var lengthOfLongestSubstring = function(str) {
+				var strs = [],//保存单个字符串
+					strLang = 0;
+				if (str.length){
+					for(let i = 0;i < str.length;i++){
+						strs[i] = str.substring(i,i+1);
+					}
+				}else {
+					return 0;
+				};
+		//		遍历这个数组,进行组合
+				for(let i = 0;i < strs.length;i++){
+		//			第一个字符串
+					let newStr = strs[i];
+					for (let x = i+1 ;x < strs.length;x++){
+		//				如果下一个字符与前面的字符串没有匹配,则两个字符串拼接起来
+		//				indexOf(),返回的是字符在字符串中的下表,如果没有匹配返回-1
+						if (newStr.indexOf(strs[x])<0){
+							newStr= newStr + strs[x];
+						}else{
+							break;
+						}
+					};
+					if (strLang < newStr.length){
+						strLang = newStr.length;
 					};
 				};
+				return strLang;
 			};
-			twoSum([3,2,4],6);
+			lengthOfLongestSubstring("abcabcbb");
 		</pre>
 	</div>
 <script>
@@ -48,23 +67,15 @@
 	 * Author : freed
 	 * Date   : 2016-11-14
 	 * /
-
-
+	 *
 	/**
-	 * @param {number[]} nums
-	 * @param {number} target
-	 * @return {number[]}
-	 */
-
-	/**
-	 * @param {string} s
+	 * 输入一个字符串，输出找到最长的,连续的,不能有重复字符的子字符串的长度
+	 * @param {string} str
 	 * @return {number}
 	 */
 	var lengthOfLongestSubstring = function(str) {
 		var strs = [],//保存单个字符串
 			strLang = 0;
-//			newStrs = [];//生成所有带有不重复字母的连续字符串数组
-		//遍历字符串,拆分单个字符至新数组
 		if (str.length){
 			for(let i=0;i<str.length;i++){
 				strs[i] = str.substring(i,i+1);
@@ -81,6 +92,8 @@
 //				indexOf(),返回的是字符在字符串中的下表,如果没有匹配返回-1
 				if (newStr.indexOf(strs[x])<0){
 					newStr= newStr + strs[x];
+				}else{
+					break;
 				}
 			};
 			if (strLang < newStr.length){
@@ -88,9 +101,8 @@
 			};
 		};
 		return strLang;
-	}
-//	lengthOfLongestSubstring("pkew");
-	console.log(lengthOfLongestSubstring("pwwkew"));
+	};
+	lengthOfLongestSubstring("abcabcbb");
 </script>
 </body>
 </html>
