@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<title>6.ZigZag Conversion</title>
+</head>
+<body>
+
+	<div class="container">
+		<h1>1.The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility).</h1>
+		<h1>1.字符串"PAYPALISHIRING"被</h1>
+		<h3>Examples1:</h3>
+		<pre>
+			P   A   H   N
+			A P L S I I G
+			Y   I   R
+		</pre>
+		<h3>And then read line by line: "PAHNAPLSIIGYIR"
+			Write the code that will take a string and make this conversion given a number of rows:</h3>
+		<pre>
+			string convert(string text, int nRows);
+		</pre>
+		<h3>convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".</h3>
+		<h3>Solution</h3>
+		<pre>
+			/**
+			 * Source : https://leetcode.com/problems/two-sum/
+			 * Author : freed
+			 * Date   : 2016-11-15
+			 * e-mail : flyxz@126.com
+			 * /
+			 *
+			/**
+			 * 给定一个字符串,返回最长的回文字符串
+			 * @param {string} str
+			 * @return {string} str
+			 */
+			var longestPalindrome = function(s) {
+				var newStr,revNewStr;
+				for(var i =0 ; i < s.length ; i++){
+					for(var x = 0;x <= i; x++ ){
+						newStr = s.substring(x,s.length-i+x);
+						revNewStr = newStr.split("").reverse().join("");
+						if (newStr === revNewStr){
+							return newStr;
+						}
+					}
+				}
+			};
+			var s = "babad";
+			console.log(longestPalindrome(s));
+		</pre>
+	</div>
+<script>
+	/**
+	 * Source : https://leetcode.com/problems/two-sum/
+	 * Author : freed
+	 * Date   : 2016-11-15
+	 * e-mail : flyxz@126.com
+	 * /
+
+	 /**
+	 * 给定一个字符串,返回最长的回文字符串
+	 * @param {string} str
+	 * @return {string} str
+	 */
+	var longestPalindrome = function(s) {
+		var newStr,revNewStr;
+		for(var i =0 ; i < s.length ; i++){
+			for(var x = 0;x <= i; x++ ){
+				newStr = s.substring(x,s.length-i+x);
+				revNewStr = newStr.split("").reverse().join("");
+				if (newStr === revNewStr){
+					return newStr;
+				}
+			}
+		}
+	};
+	var s = "babad";
+	console.log(longestPalindrome(s));
+</script>
+</body>
+</html>
